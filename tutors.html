@@ -1,0 +1,290 @@
+<!--
+  tutors.html - Tutor Directory Page with 10 sample tutors
+  - Save as tutors.html and link from your site.
+  - EDIT the tutor cards below: replace names, initials, emails, phone numbers, subjects, bios, rates, and availability.
+  - The "Contact / Book" button opens a demo modal; hook the form to your backend to send real requests.
+-->
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>MatricBoost</title>
+
+  <style>
+    :root{
+      --brand:#0b6efd;
+      --accent:#06b6d4;
+      --muted:#6b7280;
+      --bg:#f8fafc;
+      --card:#ffffff;
+      --radius:12px;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:#0f172a;line-height:1.45;font-size:16px}
+    .container{max-width:1100px;margin:0 auto;padding:24px}
+
+    header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:18px}
+    .brand{display:flex;gap:12px;align-items:center;text-decoration:none;color:inherit}
+    .logo{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--brand),var(--accent));display:flex;align-items:center;justify-content:center;color:white;font-weight:700}
+    nav{display:flex;gap:10px;align-items:center}
+    .btn{background:var(--brand);color:white;padding:8px 12px;border-radius:10px;text-decoration:none;font-weight:600}
+
+    .hero{background:var(--card);padding:18px;border-radius:var(--radius);box-shadow:0 6px 18px rgba(2,6,23,0.06);margin-bottom:18px}
+    .muted{color:var(--muted)}
+    .small{font-size:13px}
+
+    .controls{display:flex;gap:12px;flex-wrap:wrap;margin-top:12px;align-items:center}
+    .search{flex:1;display:flex;gap:8px;align-items:center;background:#f1f5f9;padding:8px;border-radius:10px}
+    input[type="search"], input[type="text"], select{border:0;background:transparent;outline:none;font-size:15px;width:100%}
+
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-top:18px}
+    .card{background:var(--card);padding:14px;border-radius:12px;box-shadow:0 6px 18px rgba(2,6,23,0.04);display:flex;gap:12px;align-items:flex-start}
+    .avatar{width:72px;height:72px;border-radius:10px;background:#eef2ff;display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--brand);flex-shrink:0}
+    .t-info{flex:1}
+    .t-name{font-weight:700;margin:0}
+    .t-subjects{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+    .tag{background:#f1f9ff;color:var(--brand);padding:6px 8px;border-radius:8px;font-size:13px}
+    .contact-row{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
+    .contact-btn{padding:8px 10px;border-radius:8px;border:1px solid #eef2f7;background:transparent;text-decoration:none;color:inherit;font-weight:600;cursor:pointer}
+    .verified{display:inline-block;background:#ecfdf5;color:#065f46;padding:4px 8px;border-radius:999px;font-size:12px;margin-left:8px}
+
+    .meta{color:var(--muted);font-size:13px;margin-top:6px}
+
+    footer{margin-top:24px;padding:12px 0;color:var(--muted);font-size:14px;text-align:center}
+
+    /* Modal */
+    .modal-backdrop{position:fixed;inset:0;background:rgba(2,6,23,0.45);display:none;align-items:center;justify-content:center;padding:20px;z-index:50}
+    .modal{background:var(--card);padding:18px;border-radius:12px;max-width:520px;width:100%;box-shadow:0 12px 40px rgba(2,6,23,0.3)}
+    .modal h3{margin-top:0}
+    .close{background:transparent;border:0;font-size:18px;cursor:pointer;color:var(--muted)}
+
+    @media (max-width:720px){
+      .controls{flex-direction:column;align-items:stretch}
+      .contact-row{justify-content:flex-start}
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <!-- Header -->
+    <header>
+      <a class="brand" href="index.html">
+        <div class="logo">PUSH</div>
+        <div>
+          <div style="font-weight:700"><font size="6">MatricBoost</font></div>
+          <div class="small muted">Find tutors • Book sessions • Get help</div>
+        </div>
+      </a>
+
+      <nav>
+        <a class="btn" href="index.html">Home</a>
+      </nav>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+      <h1 style="margin:0">Tutor Directory</h1>
+      <p class="muted small" style="margin-top:6px">Browse verified tutors, view subjects and availability, and contact them directly. Use the search and filters to find the right match.</p>
+
+      <!-- Controls -->
+      <div class="controls">
+        <div class="search" style="min-width:220px">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" style="opacity:.6"><path d="M21 21l-4.35-4.35" stroke="#0f172a" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="11" cy="11" r="6" stroke="#0f172a" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <input id="search" type="search" placeholder="Search tutors by name or subject" aria-label="Search tutors" />
+        </div>
+
+        <select id="filter-subject" style="min-width:180px;padding:8px;border-radius:8px;border:1px solid #eef2f7;background:white">
+          <option value="">Filter by subject</option>
+          <option value="Mathematics">Mathematics</option>
+          <option value="Physical Sciences">Physical Sciences</option>
+          <option value="Life Sciences">Life Sciences</option>
+          <option value="Accounting">Accounting</option>
+          <option value="English">English</option>
+        </select>
+
+        <select id="filter-mode" style="min-width:160px;padding:8px;border-radius:8px;border:1px solid #eef2f7;background:white">
+          <option value="">Any mode</option>
+          <option value="Online">Online</option>
+          <option value="In-person">In-person</option>
+          <option value="Hybrid">Hybrid</option>
+        </select>
+
+        <button id="clear-filters" class="contact-btn" style="background:#fff">Clear</button>
+      </div>
+    </section>
+
+    <!-- Tutors grid -->
+    <section class="grid" id="tutors-grid">
+      <!-- Tutor 1 -->
+      <article class="card" data-subjects="Mathematics,Calculus,Algebra" data-mode="In-person">
+        <div class="avatar" aria-hidden="true"><img src="kamo tutor.jpeg" height="70" width="65"/> </div>
+        <div class="t-info">
+          <div style="display:flex;align-items:center;gap:8px">
+            <h3 class="t-name" style="margin:0">Kamohelo T Majola</h3>
+            <span class="verified" title="Verified tutor">Verified</span>
+          </div>
+        
+          <div class="t-subjects" aria-hidden="true" style="margin-top:8px">
+            <span class="tag">Mathematics</span>
+            <span class="tag">CAT</span>
+            <span class="tag">Physical Sciences</span>
+          </div>
+
+          <p class="muted small" style="margin-top:10px"> Second year Computer Science student at UCT.</br>
+		  Focuses on exam technique and step-by-step worked examples for Grade 12 learners.</p>
+
+          <div class="contact-row">
+            <p> Contact: 065 9342672 </p>
+          </div>
+
+          <div class="meta" style="margin-top:8px">Availability: <strong>N/A</strong></div>
+        </div>
+      </article>
+
+      
+
+         
+
+    </section>
+
+    <footer>
+      <div class="muted small">Privacy note: Contact details are provided by tutors. Share personal information only after you are comfortable. The site is not responsible for third-party arrangements.</div>
+    </footer>
+  </div>
+
+  <!-- Contact / Booking Modal -->
+  <div id="modal" class="modal-backdrop" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal" role="document">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <h3 id="modal-title" style="margin:0">Contact Tutor</h3>
+        <button class="close" onclick="closeModal()" aria-label="Close">✕</button>
+      </div>
+
+      <form id="contact-form" style="margin-top:12px">
+        <div style="margin-bottom:8px">
+          <label class="small muted">Tutor</label>
+          <div id="modal-tutor" style="font-weight:700"></div>
+        </div>
+
+        <div style="margin-bottom:8px">
+          <label class="small muted">Your name</label>
+          <input id="student-name" type="text" required style="width:100%;padding:8px;border-radius:8px;border:1px solid #eef2f7" />
+        </div>
+
+        <div style="margin-bottom:8px">
+          <label class="small muted">Your email or phone</label>
+          <input id="student-contact" type="text" required style="width:100%;padding:8px;border-radius:8px;border:1px solid #eef2f7" />
+        </div>
+
+        <div style="margin-bottom:8px">
+          <label class="small muted">Preferred date and time</label>
+          <input id="preferred-datetime" type="text" placeholder="e.g., Mon 22 Mar, 17:00" style="width:100%;padding:8px;border-radius:8px;border:1px solid #eef2f7" />
+        </div>
+
+        <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:12px">
+          <button type="button" class="contact-btn" onclick="closeModal()">Cancel</button>
+          <button type="submit" class="btn">Send request</button>
+        </div>
+
+        <p id="modal-note" class="muted small" style="margin-top:10px">This demo sends no messages. Hook the form to your email or backend to forward requests to tutors.</p>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // ====== Client-side filtering and search ======
+    const searchInput = document.getElementById('search');
+    const filterSubject = document.getElementById('filter-subject');
+    const filterMode = document.getElementById('filter-mode');
+    const clearBtn = document.getElementById('clear-filters');
+    const tutorsGrid = document.getElementById('tutors-grid');
+
+    function normalize(s){ return String(s || '').toLowerCase(); }
+
+    function applyFilters(){
+      const q = normalize(searchInput.value);
+      const subj = filterSubject.value;
+      const mode = filterMode.value;
+
+      Array.from(tutorsGrid.children).forEach(card=>{
+        const name = normalize(card.querySelector('.t-name').textContent);
+        const subjects = normalize(card.getAttribute('data-subjects'));
+        const cardMode = normalize(card.getAttribute('data-mode'));
+
+        const matchesQuery = q === '' || name.includes(q) || subjects.includes(q);
+        const matchesSubject = subj === '' || subjects.includes(subj.toLowerCase());
+        const matchesMode = mode === '' || cardMode === mode.toLowerCase();
+
+        card.style.display = (matchesQuery && matchesSubject && matchesMode) ? '' : 'none';
+      });
+    }
+
+    searchInput.addEventListener('input', applyFilters);
+    filterSubject.addEventListener('change', applyFilters);
+    filterMode.addEventListener('change', applyFilters);
+    clearBtn.addEventListener('click', ()=>{
+      searchInput.value = '';
+      filterSubject.value = '';
+      filterMode.value = '';
+      applyFilters();
+    });
+
+    // ====== Contact modal logic ======
+    const modal = document.getElementById('modal');
+    const modalTutor = document.getElementById('modal-tutor');
+    const contactForm = document.getElementById('contact-form');
+
+    function openContactModal(button){
+      const data = button.getAttribute('data-tutor');
+      let tutor = {};
+      try { tutor = JSON.parse(data); } catch(e){ tutor = { name: 'Tutor' }; }
+
+      modalTutor.textContent = tutor.name || 'Tutor';
+      document.getElementById('modal-title').textContent = 'Contact ' + (tutor.name || 'Tutor');
+      modal.style.display = 'flex';
+      modal.setAttribute('aria-hidden', 'false');
+
+      document.getElementById('student-name').value = '';
+      document.getElementById('student-contact').value = '';
+      document.getElementById('preferred-datetime').value = '';
+    }
+
+    function closeModal(){
+      modal.style.display = 'none';
+      modal.setAttribute('aria-hidden', 'true');
+    }
+
+    // Demo form submit handler
+    contactForm.addEventListener('submit', function(e){
+      e.preventDefault();
+      // Replace this demo behavior with real submission to your backend or email service
+      const studentName = document.getElementById('student-name').value.trim();
+      const studentContact = document.getElementById('student-contact').value.trim();
+      const preferred = document.getElementById('preferred-datetime').value.trim();
+      alert('Request sent (demo).\nName: ' + studentName + '\nContact: ' + studentContact + '\nPreferred: ' + preferred);
+      closeModal();
+    });
+
+    // Accessibility: close modal on Escape
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape' && modal.style.display === 'flex') closeModal();
+    });
+
+    // Optional: copy phone number to clipboard when tel: clicked
+    tutorsGrid.addEventListener('click', function(e){
+      const el = e.target;
+      if(el.matches('.contact-btn') && el.getAttribute('href') && el.getAttribute('href').startsWith('tel:')){
+        const tel = el.getAttribute('href').replace('tel:','');
+        navigator.clipboard?.writeText(tel).catch(()=>{});
+      }
+    });
+
+    // Initialize filters
+    applyFilters();
+  </script>
+</body>
+</html>

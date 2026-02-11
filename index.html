@@ -1,0 +1,330 @@
+<!--
+  Grade 12 Study Hub - Single-file homepage
+  - Edit the sections marked with "EDIT HERE" to customize content.
+  - Replace placeholder text, images, and links with your real content.
+  - Save as index.html and open in a browser to preview.
+-->
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>MatricBoost</title>
+
+  <!-- Basic styling. Edit colors, fonts, spacing below -->
+  <style>
+    /* ====== EDIT HERE: Theme colors and fonts ====== */
+    :root{
+      --brand:#0b6efd;           /* primary color */
+      --accent:#06b6d4;         /* accent color */
+      --muted:#6b7280;          /* muted text */
+      --bg:#f8fafc;             /* page background */
+      --card:#ffffff;           /* card background */
+      --radius:12px;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; "Impact"
+    }
+
+    /* ====== Global layout ====== */
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      background:var(--bg);
+      color:#0f172a;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.45;
+      font-size:16px;
+    }
+    .container{max-width:1100px;margin:0 auto;padding:24px;}
+
+    /* ====== Header ====== */
+    header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      margin-bottom:20px;
+    }
+    .brand{
+      display:flex;
+      gap:12px;
+      align-items:center;
+      text-decoration:none;
+      color:inherit;
+    }
+    .logo{
+      width:48px;height:48px;border-radius:10px;background:linear-gradient(135deg,var(--brand),var(--accent));
+      display:flex;align-items:center;justify-content:center;color:white;font-weight:700;
+      font-size:18px;
+    }
+    nav{display:flex;gap:12px;align-items:center;}
+    .btn{
+      background:var(--brand);color:white;padding:10px 14px;border-radius:10px;text-decoration:none;font-weight:600;
+      display:inline-block;
+    }
+    .ghost{background:transparent;border:1px solid rgba(15,23,42,0.06);padding:8px 12px;border-radius:10px;}
+
+    /* ====== Hero ====== */
+    .hero{
+      display:grid;
+      grid-template-columns:1fr 360px;
+      gap:20px;
+      align-items:center;
+      margin-bottom:28px;
+    }
+    .hero-card{
+      background:var(--card);
+      padding:22px;border-radius:var(--radius);box-shadow:0 6px 18px rgba(2,6,23,0.06);
+    }
+    .hero h1{margin:0 0 8px 0;font-size:28px;}
+    .hero p{margin:0;color:var(--muted);}
+
+    /* ====== Subject tiles ====== */
+    .subjects{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+      gap:14px;
+      margin-top:18px;
+    }
+    .tile{
+      background:linear-gradient(180deg, rgba(11,110,253,0.06), rgba(6,182,212,0.03));
+      border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:8px;
+      min-height:110px;justify-content:space-between;
+    }
+    .tile h3{margin:0;font-size:18px;}
+    .tile p{margin:0;color:var(--muted);font-size:14px;}
+
+    /* ====== Features and sample quiz ====== */
+    .grid-2{display:grid;grid-template-columns:1fr 360px;gap:18px;margin-bottom:28px;}
+    .card{background:var(--card);padding:18px;border-radius:12px;box-shadow:0 6px 18px rgba(2,6,23,0.04);}
+
+    /* ====== Footer ====== */
+    footer{margin-top:30px;padding:18px 0;color:var(--muted);font-size:14px;text-align:center;}
+
+    /* ====== Responsive ====== */
+    @media (max-width:880px){
+      .hero, .grid-2{grid-template-columns:1fr;}
+      .hero-card{order:2}
+    }
+
+    /* ====== Small utilities ====== */
+    .muted{color:var(--muted)}
+    .small{font-size:13px}
+    .search{
+      display:flex;gap:8px;align-items:center;background:#f1f5f9;padding:8px;border-radius:10px;
+    }
+    input[type="search"]{border:0;background:transparent;outline:none;font-size:15px;width:100%}
+    .subject-actions{display:flex;gap:8px;flex-wrap:wrap}
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <!-- ====== Header ====== -->
+    <header>
+      <a class="brand" href="#">
+        <div class="logo">PUSH</div>
+        <div>
+          <div style="font-weight:700"><font size="7" font="Impact">MatricBoost</font></div>
+          <div class="small muted">CAPS aligned • Quick revision • Practice quizzes</div>
+        </div>
+      </a>
+
+      <nav>
+        <!-- ====== EDIT HERE: Update nav links or add authentication ====== -->
+        
+      </nav>
+    </header>
+
+    <!-- ====== Hero section ====== -->
+    <section class="hero">
+      <div class="hero-card">
+        <h1>One last push today, a lifetime of opportunities tomorrow.</h1>
+        <p>Let's go matrics. This is your final year of school and one the most important 
+		years fo your life. Push yourself, stay focused and give it your all. YOUR FUTURE DEPENDS ON IT!</p>
+
+        <!-- ====== EDIT HERE: Replace with a short welcome message or school name ====== -->
+       
+
+        <!-- ====== Quick stats (optional) ====== -->
+        <div style="display:flex;gap:12px;margin-top:14px">
+          <div class="small muted"><i><b> #leaders_of_tomorrow</b></i> </div>
+          <div class="small muted"><i><b>#last_push</b></i></div>
+          <div class="small muted"><i><b>#final_lap</b></i></div>
+        </div>
+      </div>
+
+      <!-- ====== Right column: Signup / quick links ====== -->
+      <aside style="display:flex;flex-direction:column;gap:12px">
+        <div class="card">
+          <strong>Find online tutors</strong>
+          <p class="muted small">For flexible, personalized learning, instant feedback, and access to expert support anytime, anywhere.</p>
+          <!-- ====== EDIT HERE: Hook up to your auth system or remove ====== -->
+          <a class="btn" href="tutors.html" style="display:inline-block;margin-top:10px">Tutors</a>
+        </div>
+
+        <div class="card small muted">
+          <strong>Exam countdown</strong>
+          <div id="countdown" style="font-weight:700;margin-top:8px">-- days</div>
+          <!-- ====== EDIT HERE: Set examDate in the JS below ====== -->
+        </div>
+      </aside>
+    </section>
+
+    <!-- ====== Subjects grid ====== -->
+    <section id="subjects" class="card" style="margin-bottom:18px">
+      <h2 style="margin-top:0">Core Subjects</h2>
+      <p class="muted small">Subjects available.</p>
+
+      <div class="subjects" style="margin-top:13px">
+        <!-- ====== EDIT HERE: Add or remove subject tiles ====== -->
+        <a class="tile" href=>
+          <div>
+            <h3>Mathematics</h3>
+            <p>Calculus, Algebra, Probability</p>
+          </div>
+          <div class="subject-actions small muted">Quick quizzes; Formula sheet</div>
+        </a>
+
+        <a class="tile" href="#physical-sciences">
+          <div>
+            <h3>Physical Sciences</h3>
+            <p>Mechanics, Chemistry, Electricity</p>
+          </div>
+          <div class="subject-actions small muted">Worked examples; Past papers</div>
+        </a>
+
+        <a class="tile" href="#life-sciences">
+          <div>
+            <h3>Life Sciences</h3>
+            <p>Genetics, Ecology, Physiology</p>
+          </div>
+          <div class="subject-actions small muted">Diagrams; Revision notes</div>
+        </a>
+
+        <a class="tile" href="#accounting">
+          <div>
+            <h3>Accounting</h3>
+            <p>Financial statements; Ratios</p>
+          </div>
+          <div class="subject-actions small muted">Step-by-step solutions</div>
+        </a>
+		
+		 <a class="tile" href="#accounting">
+          <div>
+            <h3>CAT</h3>
+            <p>HTML; Word; Excel; Database</p>
+          </div>
+          <div class="subject-actions small muted">Step-by-step solutions</div>
+        </a>
+
+        <!-- Add more tiles as needed -->
+      </div>
+    </section>
+
+    <!-- ====== Two-column area: Features + Sample quiz ====== -->
+    <section class="grid-2">
+      <div class="card">
+        <h3 style="margin-top:0">How this site helps you</h3>
+        <ul class="muted small">
+          <!-- ====== EDIT HERE: Customize features ====== -->
+          <li>Short, CAPS-aligned lessons for each topic.</li>
+          <li>With one-on-one attention, students can strengthen weak areas, improve grades, and gain confidence ahead of final exams.</li>
+          <li>Students can connect with tutors who specialize in their subjects, ensuring tailored guidance that matches their learning style and academic needs.</li>
+          <li>Past papers with suggested answers and marking tips.</li>
+        </ul>
+
+        <hr style="margin:14px 0;border:none;border-top:1px solid #eef2f7" />
+
+        <h4 style="margin:0 0 8px 0">Disclaimer</h4>
+        <p class="muted small">I am not a certified expert, just someone passionate about learning and sharing knowledge to help other improve.
+		</br>~Lesedi Nkhethoa~
+		</p>
+      </div>
+
+      <!-- ====== Sample interactive quiz (client-side demo) ====== -->
+      
+    <!-- ====== Past papers preview ====== -->
+    <section id="past-papers" class="card" style="margin-bottom:18px">
+      <h3 style="margin-top:0">Past papers and answers</h3>
+      <p class="muted small">Download past exam papers and suggested answers from the DBE website.
+	  Past papers help you understand exam patterns, practise effectively, and improve confidence.
+	  </br>
+	  </br>
+	  <button><a href=" https://www.education.gov.za/Curriculum/NationalSeniorCertificate(NSC)Examinations/tabid/338/Default.aspx "> DBE WEBISTE </a></button></p>
+
+      <!-- ====== EDIT HERE: Replace with dynamic list or links to files ====== -->
+      
+    </section>
+
+    <!-- ====== Footer ====== -->
+    <footer>
+      <!-- ====== EDIT HERE: Add contact details, privacy note, or school info ====== -->
+      <div>© <strong>MatricBoost</strong> — Built for learners in South Africa.</div>
+      <div class="muted small" style="margin-top:6px">Built by <strong>Lesedi Nkhethoa</strong> </div>
+    </footer>
+
+  </div>
+
+  <!-- ====== Minimal JavaScript for interactivity ====== -->
+  <script>
+    // ====== EDIT HERE: Set your exam date for the countdown (YYYY, M-1, D) ======
+    const examDate = new Date(2026, 10, 1); // Example: 1 Nov 2026 (month is zero-based)
+
+    // Countdown display
+    function updateCountdown(){
+      const now = new Date();
+      const diff = examDate - now;
+      const el = document.getElementById('countdown');
+      if(isNaN(diff)){
+        el.textContent = '-- days';
+        return;
+      }
+      if(diff <= 0){
+        el.textContent = 'Exams started';
+        return;
+      }
+      const days = Math.floor(diff / (1000*60*60*24));
+      el.textContent = days + ' days';
+    }
+    updateCountdown();
+    setInterval(updateCountdown, 60*60*1000); // update hourly
+
+    // ====== Simple quiz logic (client-side demo) ======
+    // Replace this with server-driven quizzes or a quiz engine for production.
+    (function(){
+      const correctAnswer = 'A) 2x'; // EDIT HERE: change correct answer per question
+      const options = document.querySelectorAll('.opt');
+      const feedback = document.getElementById('feedback');
+
+      options.forEach(btn=>{
+        btn.addEventListener('click', ()=>{
+          // Visual feedback
+          options.forEach(b=>b.style.opacity = '0.6');
+          btn.style.opacity = '1';
+          // Check answer
+          if(btn.textContent.trim() === correctAnswer){
+            feedback.textContent = 'Correct — the derivative of x² is 2x. Well done!';
+            feedback.style.color = 'green';
+          } else {
+            feedback.textContent = 'Not quite. The correct answer is A) 2x. Review the power rule.';
+            feedback.style.color = '#b91c1c';
+          }
+        });
+      });
+    })();
+
+    // ====== Accessibility: allow Enter key to activate buttons ======
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Enter'){
+        const active = document.activeElement;
+        if(active && active.classList && active.classList.contains('opt')){
+          active.click();
+        }
+      }
+    });
+  </script>
+</body>
+</html>
